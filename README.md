@@ -18,8 +18,13 @@
 <div align="center">
   <table>
     <tr>
-      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_home.png" width="250px" /><br /><b>Map & POI Search</b></td>
-      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_drawer.png" width="250px" /><br /><b>Alarm History Drawer</b></td>
+      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_home.png" width="250px" /><br /><b>Map & Search</b></td>
+      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_destination.png" width="250px" /><br /><b>Destination Set</b></td>
+      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_notification.png" width="250px" /><br /><b>Quick Panel Notification</b></td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_drawer.png" width="250px" /><br /><b>Alarm History</b></td>
+      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_alarm.png" width="250px" /><br /><b>Full-Screen Alarm</b></td>
     </tr>
   </table>
 </div>
