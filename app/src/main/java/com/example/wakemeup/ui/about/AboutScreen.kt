@@ -102,7 +102,7 @@ fun AboutScreen(
                 ),
                 modifier = Modifier.fillMaxWidth(0.7f)
             ) {
-                Text("Buy me a coffee")
+                Text("☕ Buy me a coffee")
             }
 
             Spacer(modifier = Modifier.height(32.dp))
