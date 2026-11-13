@@ -3,7 +3,7 @@
 [![Android API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=for-the-badge&logo=android)](https://android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-blue.svg?style=for-the-badge&logo=kotlin)](https://kotlinlang.org)
 [![Compose](https://img.shields.io/badge/Jetpack%20Compose-M3-4285F4.svg?style=for-the-badge&logo=jetpackcompose)](https://developer.android.com/jetpack/compose)
-[![Build Status](https://img.shields.io/badge/Build-Passing-success.svg?style=for-the-badge&logo=githubactions)](https://github.com)
+[![Build Status](https://img.shields.io/badge/Build-Passing-success.svg?style=for-the-badge&logo=githubactions)](https://github.com/Tronshark/WakeMeUp/actions)
 [![License](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](LICENSE)
 
 **WakeMeUp** is a smart, location-based traveler alarm app for Android designed to ensure passengers on buses, trains, subways, or rideshares never miss their stop again. Whether catching a quick nap during a long commute or traveling through unfamiliar cities, WakeMeUp monitors real-time GPS coordinates and triggers an unmissable full-screen lockscreen alarm as soon as you enter your configured destination radius.
@@ -96,7 +96,7 @@ WakeMeUp/
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/user/WakeMeUp.git
+   git clone https://github.com/Tronshark/WakeMeUp.git
    cd WakeMeUp
    ```
 
