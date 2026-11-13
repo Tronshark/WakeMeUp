@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.WakeMeUp" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.WakeMeUp.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#0F172A</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_branding</item>
+        <item name="postSplashScreenTheme">@style/Theme.WakeMeUp</item>
+    </style>
+</resources>
