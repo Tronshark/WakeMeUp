@@ -5,6 +5,7 @@ package com.example.wakemeup.ui.about
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +25,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -35,6 +38,7 @@ fun AboutScreen(
 ) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
+    val coroutineScope = rememberCoroutineScope()
     val commentManager = remember { CommentManager(context) }
     var comments by remember { mutableStateOf(commentManager.getComments()) }
     var newCommentText by remember { mutableStateOf("") }
@@ -128,14 +132,19 @@ fun AboutScreen(
             Button(
                 onClick = {
                     if (newCommentText.isNotBlank()) {
-                        commentManager.addComment(newCommentText)
+                        val textToSend = newCommentText
+                        commentManager.addComment(textToSend)
+                        coroutineScope.launch {
+                            commentManager.sendCommentToServer(textToSend)
+                        }
                         comments = commentManager.getComments()
                         newCommentText = ""
+                        Toast.makeText(context, "Comment posted and sent anonymously!", Toast.LENGTH_SHORT).show()
                     }
                 },
                 modifier = Modifier.align(Alignment.End)
             ) {
-                Text("Add Comment")
+                Text("Post Comment")
             }
 
             Spacer(modifier = Modifier.height(16.dp))
