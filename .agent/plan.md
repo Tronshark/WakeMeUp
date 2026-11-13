@@ -82,14 +82,14 @@ WakeMeUp: A location-based alarm app for travelers in buses, trains, etc. It ale
   - Comment input field, save button, and comment list are added to the About Screen
   - Comments are successfully saved and loaded via SharedPreferences and Gson
   - New files are watermarked with Author: TronShark
-- **Duration:** N/A
 
 ### Task_8_RunVerifyAndPushToGitHub: Run and verify the About Screen comment functionality, ensure app stability, and commit and push all changes to GitHub.
-- **Status:** IN_PROGRESS
+- **Status:** COMPLETED
+- **Updates:** Added local comments & notes section to AboutScreen. Replaced donation button with Buy Me a Coffee button (slug tronshark, yellow #FFDD00). Verified build and pushed all changes to GitHub.
 - **Acceptance Criteria:**
   - build pass
   - app does not crash
   - make sure all existing tests pass
   - Changes are committed and pushed to GitHub
-- **StartTime:** 2026-11-14 03:04:25 IST
+- **Duration:** N/A
 

@@ -64,7 +64,7 @@ class CommentManager(context: Context) {
             try {
                 val jsonBody = gson.toJson(
                     mapOf(
-                        "access_key" to "YOUR_WEB3FORMS_ACCESS_KEY",
+                        "access_key" to "bd56cd62-758f-4458-926a-ba2bf4b24937",
                         "subject" to "New Comment from WakeMeUp App",
                         "message" to text
                     )
