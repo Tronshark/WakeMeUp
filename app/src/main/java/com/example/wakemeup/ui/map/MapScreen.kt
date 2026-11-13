@@ -123,6 +123,7 @@ fun MapScreen(
 
     ModalNavigationDrawer(
         drawerState = drawerState,
+        gesturesEnabled = false,
         drawerContent = {
             ModalDrawerSheet {
                 Text("Alarm History", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
