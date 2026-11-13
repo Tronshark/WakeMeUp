@@ -51,6 +51,15 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = true
     }
+
+    applicationVariants.all {
+        val variant = this
+        val apkName = "WakeMeUp-${variant.name}.apk"
+        outputs.all {
+            val output = this as com.android.build.gradle.internal.api.BaseVariantOutputImpl
+            output.outputFileName = apkName
+        }
+    }
 }
 
 kotlin {
