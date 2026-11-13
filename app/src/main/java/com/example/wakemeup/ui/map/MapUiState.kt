@@ -1,5 +1,8 @@
 package com.example.wakemeup.ui.map
 
+// Author: TronShark
+// Version: v1.0
+
 import com.example.wakemeup.model.Destination
 import org.osmdroid.util.GeoPoint
 

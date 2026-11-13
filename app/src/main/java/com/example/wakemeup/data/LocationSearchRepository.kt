@@ -1,5 +1,8 @@
 package com.example.wakemeup.data
 
+// Author: TronShark
+// Version: v1.0
+
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder

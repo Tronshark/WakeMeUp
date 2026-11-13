@@ -29,6 +29,7 @@ import androidx.compose.material.icons.rounded.Hotel
 import androidx.compose.material.icons.rounded.LocalGasStation
 import androidx.compose.material.icons.rounded.LocalHospital
 import androidx.compose.material.icons.rounded.LocationOn
+import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Museum
 import androidx.compose.material.icons.rounded.Restaurant
 import androidx.compose.material.icons.rounded.Search
@@ -64,6 +65,7 @@ fun LocationSearchBar(
     searchResults: List<Destination>,
     isSearching: Boolean,
     onDestinationSelect: (Destination) -> Unit,
+    onMenuClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -91,11 +93,13 @@ fun LocationSearchBar(
                 )
             },
             leadingIcon = {
-                Icon(
-                    imageVector = Icons.Rounded.Search,
-                    contentDescription = "Search Icon",
-                    tint = MaterialTheme.colorScheme.primary
-                )
+                IconButton(onClick = onMenuClick) {
+                    Icon(
+                        imageVector = Icons.Rounded.Menu,
+                        contentDescription = "Menu",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             },
             trailingIcon = {
                 Row(verticalAlignment = Alignment.CenterVertically) {

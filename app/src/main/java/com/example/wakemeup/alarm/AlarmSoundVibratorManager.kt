@@ -1,5 +1,8 @@
 package com.example.wakemeup.alarm
 
+// Author: TronShark
+// Version: v1.0
+
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.MediaPlayer

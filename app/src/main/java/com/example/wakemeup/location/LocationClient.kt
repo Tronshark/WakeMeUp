@@ -1,5 +1,8 @@
 package com.example.wakemeup.location
 
+// Author: TronShark
+// Version: v1.0
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location

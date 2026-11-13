@@ -1,5 +1,8 @@
 package com.example.wakemeup.location
 
+// Author: TronShark
+// Version: v1.0
+
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager

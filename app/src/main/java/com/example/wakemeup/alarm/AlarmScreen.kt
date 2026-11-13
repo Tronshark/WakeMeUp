@@ -1,5 +1,8 @@
 package com.example.wakemeup.alarm
 
+// Author: TronShark
+// Version: v1.0
+
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring

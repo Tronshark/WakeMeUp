@@ -1,4 +1,6 @@
 <resources>
+    <!-- Author: TronShark -->
+    <!-- Version: v1.0 -->
     <string name="app_name">WakeMeUp</string>
     <string name="google_maps_key">YOUR_API_KEY</string>
 </resources>

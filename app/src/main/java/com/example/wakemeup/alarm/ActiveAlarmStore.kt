@@ -1,5 +1,8 @@
 package com.example.wakemeup.alarm
 
+// Author: TronShark
+// Version: v1.0
+
 import android.content.Context
 import android.util.Log
 import com.example.wakemeup.location.GeofenceManager
@@ -20,6 +23,7 @@ object ActiveAlarmStore {
     private const val KEY_DEST_LAT = "dest_lat"
     private const val KEY_DEST_LON = "dest_lon"
     private const val KEY_RADIUS_METERS = "radius_meters"
+    private const val KEY_HISTORY_ID = "history_id"
 
     private val _activeDestination = MutableStateFlow<Destination?>(null)
     val activeDestination: StateFlow<Destination?> = _activeDestination.asStateFlow()
@@ -29,6 +33,8 @@ object ActiveAlarmStore {
 
     private val _isAlarmTriggered = MutableStateFlow(false)
     val isAlarmTriggered: StateFlow<Boolean> = _isAlarmTriggered.asStateFlow()
+    
+    var currentHistoryId: String? = null
 
     fun saveState(context: Context) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -41,6 +47,7 @@ object ActiveAlarmStore {
             .putString(KEY_DEST_LAT, (dest?.latitude ?: 0.0).toString())
             .putString(KEY_DEST_LON, (dest?.longitude ?: 0.0).toString())
             .putFloat(KEY_RADIUS_METERS, _radiusMeters.value)
+            .putString(KEY_HISTORY_ID, currentHistoryId)
             .apply()
         Log.i(TAG, "Saved alarm state: isActive=$isActive, dest=${dest?.title}")
     }
@@ -54,6 +61,7 @@ object ActiveAlarmStore {
             val lat = prefs.getString(KEY_DEST_LAT, "0.0")?.toDoubleOrNull() ?: 0.0
             val lon = prefs.getString(KEY_DEST_LON, "0.0")?.toDoubleOrNull() ?: 0.0
             val radius = prefs.getFloat(KEY_RADIUS_METERS, 1000f)
+            currentHistoryId = prefs.getString(KEY_HISTORY_ID, null)
 
             if (title.isNotBlank()) {
                 val dest = Destination(
@@ -75,6 +83,7 @@ object ActiveAlarmStore {
         _isAlarmTriggered.value = false
         Log.i(TAG, "Active alarm set for destination: ${destination.title}, radius: $radius m")
         context?.let {
+            currentHistoryId = AlarmHistoryManager.recordAlarmSet(it, destination.title)
             saveState(it)
             AlarmNotificationHelper.postNotification(
                 context = it,
@@ -91,6 +100,10 @@ object ActiveAlarmStore {
         Log.i(TAG, "Triggering alarm alert!")
 
         AlarmSoundVibratorManager.startAlarm(context)
+        
+        currentHistoryId?.let {
+            AlarmHistoryManager.recordAlarmRing(context, it)
+        }
 
         val dest = _activeDestination.value
         val title = dest?.title ?: "Destination Reached"
@@ -104,6 +117,7 @@ object ActiveAlarmStore {
         Log.i(TAG, "Stopping alarm and clearing geofences")
         _isAlarmTriggered.value = false
         _activeDestination.value = null
+        currentHistoryId = null
         saveState(context)
         AlarmSoundVibratorManager.stopAlarm()
         AlarmNotificationHelper.cancelAlarmNotification(context)

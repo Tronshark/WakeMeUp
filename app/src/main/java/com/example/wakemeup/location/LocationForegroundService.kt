@@ -1,5 +1,8 @@
 package com.example.wakemeup.location
 
+// Author: TronShark
+// Version: v1.0
+
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager

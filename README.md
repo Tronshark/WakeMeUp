@@ -12,7 +12,7 @@
 
 ## 🎥 App Demonstration
 
-<video src="docs/demo.mp4" controls="controls" width="100%" style="max-width: 800px;"></video>
+<video src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/demo.mp4" controls="controls" width="100%" style="max-width: 800px;"></video>
 
 ---
 

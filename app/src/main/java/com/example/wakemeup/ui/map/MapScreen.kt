@@ -1,5 +1,8 @@
 package com.example.wakemeup.ui.map
 
+// Author: TronShark
+// Version: v1.0
+
 import android.Manifest
 import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
@@ -23,6 +26,24 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.rememberDrawerState
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.History
+import androidx.compose.ui.text.font.FontWeight
+import com.example.wakemeup.alarm.AlarmHistoryManager
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -65,6 +86,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 @Composable
 fun MapScreen(
     modifier: Modifier = Modifier,
+    onNavigateToAbout: () -> Unit = {},
     context: Context = LocalContext.current,
     viewModel: MapViewModel = viewModel(factory = MapViewModel.provideFactory(context))
 ) {
@@ -91,22 +113,63 @@ fun MapScreen(
         }
     }
 
-    MapScreenContent(
-        uiState = uiState,
-        snackbarHostState = snackbarHostState,
-        onRequestPermission = { permissionsState.launchMultiplePermissionRequest() },
-        onQueryChange = { viewModel.onQueryChanged(it) },
-        onSearchSubmit = { viewModel.performSearch() },
-        onDestinationSelect = { viewModel.selectDestination(it) },
-        onMapClick = { viewModel.onMapClick(it) },
-        onMarkerDragEnd = { viewModel.onMarkerDragEnd(it) },
-        onRadiusChange = { viewModel.onRadiusChanged(it) },
-        onToggleAlarm = { viewModel.toggleAlarm(context) },
-        onClearDestination = { viewModel.clearDestination() },
-        onCenterUserLocation = { viewModel.centerOnUserLocation() },
-        onCameraMoved = { viewModel.onCameraMoved() },
-        modifier = modifier
-    )
+    LaunchedEffect(Unit) {
+        AlarmHistoryManager.loadHistory(context)
+    }
+    
+    val alarmHistory by AlarmHistoryManager.history.collectAsState()
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val coroutineScope = androidx.compose.runtime.rememberCoroutineScope()
+
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            ModalDrawerSheet {
+                Text("Alarm History", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
+                HorizontalDivider()
+                LazyColumn(modifier = Modifier.weight(1f)) {
+                    items(alarmHistory) { item ->
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Text(text = item.destinationName, fontWeight = FontWeight.Bold)
+                            val format = SimpleDateFormat("MMM dd, HH:mm:ss", Locale.getDefault())
+                            Text(text = "Set at: ${format.format(Date(item.timeSetMs))}", style = MaterialTheme.typography.bodySmall)
+                            if (item.timeRingedMs != null) {
+                                Text(text = "Ringed at: ${format.format(Date(item.timeRingedMs!!))}", style = MaterialTheme.typography.bodySmall)
+                            }
+                        }
+                        HorizontalDivider()
+                    }
+                }
+                NavigationDrawerItem(
+                    label = { Text("About Page") },
+                    icon = { Icon(Icons.Rounded.Info, contentDescription = "About") },
+                    selected = false,
+                    onClick = {
+                        coroutineScope.launch { drawerState.close() }
+                        onNavigateToAbout()
+                    }
+                )
+            }
+        }
+    ) {
+        MapScreenContent(
+            uiState = uiState,
+            snackbarHostState = snackbarHostState,
+            onRequestPermission = { permissionsState.launchMultiplePermissionRequest() },
+            onQueryChange = { viewModel.onQueryChanged(it) },
+            onSearchSubmit = { viewModel.performSearch() },
+            onDestinationSelect = { viewModel.selectDestination(it) },
+            onMapClick = { viewModel.onMapClick(it) },
+            onMarkerDragEnd = { viewModel.onMarkerDragEnd(it) },
+            onRadiusChange = { viewModel.onRadiusChanged(it) },
+            onToggleAlarm = { viewModel.toggleAlarm(context) },
+            onClearDestination = { viewModel.clearDestination() },
+            onCenterUserLocation = { viewModel.centerOnUserLocation() },
+            onCameraMoved = { viewModel.onCameraMoved() },
+            onMenuClick = { coroutineScope.launch { drawerState.open() } },
+            modifier = modifier
+        )
+    }
 }
 
 @Composable
@@ -124,6 +187,7 @@ fun MapScreenContent(
     onClearDestination: () -> Unit,
     onCenterUserLocation: () -> Unit,
     onCameraMoved: () -> Unit,
+    onMenuClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -304,6 +368,7 @@ fun MapScreenContent(
                     searchResults = uiState.searchResults,
                     isSearching = uiState.isSearching,
                     onDestinationSelect = onDestinationSelect,
+                    onMenuClick = onMenuClick,
                     modifier = Modifier.fillMaxWidth()
                 )
 

@@ -1,5 +1,8 @@
 package com.example.wakemeup.model
 
+// Author: TronShark
+// Version: v1.0
+
 import org.osmdroid.util.GeoPoint
 import java.util.UUID
 import kotlin.math.roundToInt

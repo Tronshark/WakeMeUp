@@ -1,5 +1,8 @@
 package com.example.wakemeup
 
+// Author: TronShark
+// Version: v1.0
+
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
@@ -34,12 +37,19 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.ui.NavDisplay
 import com.example.wakemeup.alarm.ActiveAlarmStore
 import com.example.wakemeup.alarm.AlarmActivity
 import com.example.wakemeup.ui.map.MapScreen
+import com.example.wakemeup.ui.about.AboutScreen
 import com.example.wakemeup.ui.theme.WakeMeUpTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.compose.runtime.mutableStateListOf
+
+private data object MapScreenRoute
+private data object AboutScreenRoute
 
 class MainActivity : ComponentActivity() {
 
@@ -73,6 +83,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             WakeMeUpTheme {
+                val backStack = remember { mutableStateListOf<Any>(MapScreenRoute) }
                 var isLoading by remember { mutableStateOf(true) }
 
                 LaunchedEffect(Unit) {
@@ -88,7 +99,27 @@ class MainActivity : ComponentActivity() {
                     if (loading) {
                         LoadingScreen()
                     } else {
-                        MapScreen(modifier = Modifier.fillMaxSize())
+                        NavDisplay(
+                            backStack = backStack,
+                            onBack = { backStack.removeLastOrNull() },
+                            entryProvider = { key ->
+                                when(key) {
+                                    is MapScreenRoute -> NavEntry(key) {
+                                        MapScreen(
+                                            modifier = Modifier.fillMaxSize(),
+                                            onNavigateToAbout = { backStack.add(AboutScreenRoute) }
+                                        )
+                                    }
+                                    is AboutScreenRoute -> NavEntry(key) {
+                                        AboutScreen(
+                                            onNavigateBack = { backStack.removeLastOrNull() },
+                                            modifier = Modifier.fillMaxSize()
+                                        )
+                                    }
+                                    else -> error("Unknown route")
+                                }
+                            }
+                        )
                     }
                 }
             }

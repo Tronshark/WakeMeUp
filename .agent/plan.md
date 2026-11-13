@@ -55,5 +55,24 @@ WakeMeUp: A location-based alarm app for travelers in buses, trains, etc. It ale
   - app does not crash
   - make sure all existing tests pass
   - Verify application stability and UI alignment with user requirements
+
+### Task_5_NavDrawerAndHistory: Implement Navigation Drawer with Hamburger menu, persistent Alarm History, and About Page (Author: TronShark, v1.0, GitHub, Donation). Update versionName to 1.0.
+- **Status:** COMPLETED
+- **Updates:** Implemented AlarmHistoryManager to persist set and ring times using Gson. Wrapped MapScreen in ModalNavigationDrawer with History list and Info icon. Added AboutScreen with TronShark author info, GitHub link, and Donation button. Hooked Hamburger menu to open drawer. Updated Navigation graph.
+- **Acceptance Criteria:**
+  - Navigation Drawer opens from Search Bar
+  - Alarm history is stored persistently (Destination, Time Set, Time Ringed)
+  - About page shows Author, Version, GitHub Link, and Donation button
+  - versionName in build config is updated to 1.0
 - **Duration:** N/A
+
+### Task_6_WatermarkAndVerify: Fix inline video URL in README, randomly inject Author and Version comments across codebase, run and verify app stability, and push to GitHub.
+- **Status:** IN_PROGRESS
+- **Acceptance Criteria:**
+  - README.md video uses raw.githubusercontent.com for inline rendering
+  - Author: TronShark and Version tags injected in files
+  - build pass
+  - app does not crash
+  - Updates committed and pushed to GitHub
+- **StartTime:** 2026-11-14 01:51:36 IST
 
