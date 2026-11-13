@@ -12,11 +12,7 @@
 
 ## 🎥 App Demonstration
 
-![WakeMeUp App Demo](docs/demo.gif)
-
-<video src="https://github.com/Tronshark/WakeMeUp/raw/main/docs/demo.mp4" controls width="100%"></video>
-
-*If the video preview above does not play automatically, [click here to view the full demo video](https://github.com/Tronshark/WakeMeUp/raw/main/docs/demo.mp4).*
+<video src="docs/demo.mp4" controls="controls" width="100%" style="max-width: 800px;"></video>
 
 ---
 
