@@ -14,6 +14,16 @@
 
 <video src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/demo.mp4" controls="controls" width="100%" style="max-width: 800px;"></video>
 
+### 📸 Screenshots
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_home.png" width="250px" /><br /><b>Map & POI Search</b></td>
+      <td align="center"><img src="https://raw.githubusercontent.com/Tronshark/WakeMeUp/main/docs/screenshot_drawer.png" width="250px" /><br /><b>Alarm History Drawer</b></td>
+    </tr>
+  </table>
+</div>
+
 ---
 
 ## ✨ Key Features
