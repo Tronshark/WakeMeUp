@@ -64,15 +64,32 @@ WakeMeUp: A location-based alarm app for travelers in buses, trains, etc. It ale
   - Alarm history is stored persistently (Destination, Time Set, Time Ringed)
   - About page shows Author, Version, GitHub Link, and Donation button
   - versionName in build config is updated to 1.0
-- **Duration:** N/A
 
 ### Task_6_WatermarkAndVerify: Fix inline video URL in README, randomly inject Author and Version comments across codebase, run and verify app stability, and push to GitHub.
-- **Status:** IN_PROGRESS
+- **Status:** COMPLETED
+- **Updates:** Fixed README video URL using raw.githubusercontent.com for inline rendering. Watermarked 25 files across the codebase with Author: TronShark and Version: v1.0. Validated build stability and successfully pushed all updates to GitHub origin/main.
 - **Acceptance Criteria:**
   - README.md video uses raw.githubusercontent.com for inline rendering
   - Author: TronShark and Version tags injected in files
   - build pass
   - app does not crash
   - Updates committed and pushed to GitHub
-- **StartTime:** 2026-11-14 01:51:36 IST
+
+### Task_7_ImplementAboutScreenComments: Implement a Comment Section in the About Screen allowing users to type, save, and view past comments in a list. Use SharedPreferences and Gson for local storage. Watermark new files with Author: TronShark.
+- **Status:** COMPLETED
+- **Updates:** Implemented CommentManager and UserComment for storing local comments. Updated AboutScreen with TextField and list of comments. Verified build.
+- **Acceptance Criteria:**
+  - Comment input field, save button, and comment list are added to the About Screen
+  - Comments are successfully saved and loaded via SharedPreferences and Gson
+  - New files are watermarked with Author: TronShark
+- **Duration:** N/A
+
+### Task_8_RunVerifyAndPushToGitHub: Run and verify the About Screen comment functionality, ensure app stability, and commit and push all changes to GitHub.
+- **Status:** IN_PROGRESS
+- **Acceptance Criteria:**
+  - build pass
+  - app does not crash
+  - make sure all existing tests pass
+  - Changes are committed and pushed to GitHub
+- **StartTime:** 2026-11-14 03:04:25 IST
 
