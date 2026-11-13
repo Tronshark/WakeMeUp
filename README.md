@@ -10,13 +10,13 @@
 
 ---
 
-## 🎥 Video / Demo Walkthrough
+## 🎥 App Demonstration
 
-<div align="center">
-  <video src="docs/demo.mp4" width="80%" controls autoplay loop muted></video>
-</div>
+![WakeMeUp App Demo](docs/demo.gif)
 
-*Visual preview of WakeMeUp location tracking, interactive OpenStreetMap controls, quick notification panel, and full-screen alarm trigger.*
+<video src="https://github.com/Tronshark/WakeMeUp/raw/main/docs/demo.mp4" controls width="100%"></video>
+
+*If the video preview above does not play automatically, [click here to view the full demo video](https://github.com/Tronshark/WakeMeUp/raw/main/docs/demo.mp4).*
 
 ---
 
