@@ -6,6 +6,8 @@
 [![Build Status](https://img.shields.io/badge/Build-Passing-success.svg?style=for-the-badge&logo=githubactions)](https://github.com/Tronshark/WakeMeUp/actions)
 [![License](https://img.shields.io/badge/License-MIT-orange.svg?style=for-the-badge)](LICENSE)
 
+<a href="https://www.buymeacoffee.com/tronshark" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 181px !important;" ></a>
+
 **WakeMeUp** is a smart, location-based traveler alarm app for Android designed to ensure passengers on buses, trains, subways, or rideshares never miss their stop again. Whether catching a quick nap during a long commute or traveling through unfamiliar cities, WakeMeUp monitors real-time GPS coordinates and triggers an unmissable full-screen lockscreen alarm as soon as you enter your configured destination radius.
 
 ---
@@ -154,3 +156,5 @@ WakeMeUp requests only essential Android permissions required for location-based
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
+
+<a href="https://www.buymeacoffee.com/tronshark" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 181px !important;" ></a>
